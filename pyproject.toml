@@ -8,6 +8,7 @@ authors = ["Denis Zvyagintsev <dizvyagintsev@avito.ru>"]
 python = ">=3.10,<3.11"
 google-cloud-bigquery = "^3.3.5"
 fastapi = "^0.85.1"
+pytest = "^7.2.0"
 
 [tool.poetry.dev-dependencies]
 

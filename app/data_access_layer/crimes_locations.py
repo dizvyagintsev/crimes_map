@@ -4,6 +4,7 @@ from google.cloud import bigquery
 class CrimeLocationsDAL:
     def __init__(self, session: bigquery.Client):
         self.__session = session
+        # self.__session = session
 
     def crime_types(self) -> list[str]:
         """
@@ -18,7 +19,3 @@ class CrimeLocationsDAL:
         cursor = self.__session.query(query)
 
         return [row['primary_type'] for row in cursor]
-
-
-
-
