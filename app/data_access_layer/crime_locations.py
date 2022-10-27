@@ -4,7 +4,7 @@ from google.cloud import bigquery
 from more_itertools import one
 
 
-class CrimeLocationsDAL:
+class ChicagoCrimesDAL:
     def __init__(self, session: bigquery.Client):
         self.__session = session
 
@@ -12,7 +12,7 @@ class CrimeLocationsDAL:
         """
         Returns all crime types that exist in storage
 
-        >>> CrimeLocationsDAL(bigquery.Client()).crime_types()[:3]
+        >>> ChicagoCrimesDAL(bigquery.Client()).crime_types()[:3]
         ['HOMICIDE', 'CRIM SEXUAL ASSAULT', 'CRIMINAL SEXUAL ASSAULT']
 
         :return: list of crime types as strings
@@ -26,7 +26,7 @@ class CrimeLocationsDAL:
         """
         Returns first and last crime date from storage
 
-        >>> CrimeLocationsDAL(bigquery.Client()).date_range()
+        >>> ChicagoCrimesDAL(bigquery.Client()).date_range()
         (datetime.date(2001, 1, 1), datetime.date(2022, 10, 18))
 
         :return: Two dates, min and max accordingly
