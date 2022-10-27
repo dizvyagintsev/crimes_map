@@ -5,7 +5,9 @@ description = ""
 authors = ["Denis Zvyagintsev <dizvyagintsev@avito.ru>"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.10,<3.11"
+google-cloud-bigquery = "^3.3.5"
+fastapi = "^0.85.1"
 
 [tool.poetry.dev-dependencies]
 
