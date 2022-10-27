@@ -3,7 +3,7 @@ from unittest.mock import MagicMock
 import pytest
 from google.cloud import bigquery
 
-from app.data_access_layer.crimes_locations import CrimeLocationsDAL
+from app.data_access_layer.crime_locations import CrimeLocationsDAL
 
 
 @pytest.fixture

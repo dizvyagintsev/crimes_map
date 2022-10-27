@@ -3,10 +3,10 @@ from unittest.mock import MagicMock
 from google.cloud import bigquery
 from google.cloud.bigquery import Row
 
-from app.data_access_layer.crimes_locations import CrimeLocationsDAL
+from app.data_access_layer.crime_locations import CrimeLocationsDAL
 
 
-class TestCrimesLocationsDAL:
+class TestCrimeLocationsDAL:
     def test_crime_types(self, mocked_session: bigquery.Client):
         mocked_session.query = MagicMock(
             return_value=[
