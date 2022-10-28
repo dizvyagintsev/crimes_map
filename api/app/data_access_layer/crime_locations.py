@@ -30,10 +30,10 @@ class ChicagoCrimesDAL:
 
         :return: list of crime types as strings
         """
-        query = 'SELECT DISTINCT(primary_type) FROM `bigquery-public-data.chicago_crime.crime`;'
+        query = "SELECT DISTINCT(primary_type) FROM `bigquery-public-data.chicago_crime.crime`;"
         cursor = self.__session.query(query)
 
-        return [row['primary_type'] for row in cursor]
+        return [row["primary_type"] for row in cursor]
 
     def date_range(self) -> DateRange:
         """
@@ -44,12 +44,14 @@ class ChicagoCrimesDAL:
 
         :return: Two dates, min and max accordingly
         """
-        query = 'SELECT MIN(DATE(date)), MAX(DATE(date)) FROM `bigquery-public-data.chicago_crime.crime`;'
+        query = "SELECT MIN(DATE(date)), MAX(DATE(date)) FROM `bigquery-public-data.chicago_crime.crime`;"
         cursor = self.__session.query(query)
 
         return DateRange(*one(cursor))
 
-    def crime_locations(self, date_range: DateRange, crime_types: list[str]) -> list[Location]:
+    def crime_locations(
+        self, date_range: DateRange, crime_types: list[str]
+    ) -> list[Location]:
         """
         Returns a list of crime locations
         >>> dates = DateRange(datetime.date(2022, 10, 1), datetime.date(2022, 10, 18))
@@ -60,7 +62,7 @@ class ChicagoCrimesDAL:
         :return: list of locations
         """
 
-        query = '''        
+        query = """        
             SELECT latitude,
                 longitude
             FROM `bigquery-public-data.chicago_crime.crime`
@@ -68,12 +70,14 @@ class ChicagoCrimesDAL:
               AND y_coordinate IS NOT NULL
               AND DATE(date) BETWEEN @start_date AND @end_date
               AND primary_type in UNNEST(@crime_types);
-        '''
+        """
         job_config = bigquery.QueryJobConfig(
             query_parameters=[
-                bigquery.ScalarQueryParameter('start_date', 'DATE', date_range.start_date),
-                bigquery.ScalarQueryParameter('end_date', 'DATE', date_range.end_date),
-                bigquery.ArrayQueryParameter('crime_types', 'STRING', crime_types),
+                bigquery.ScalarQueryParameter(
+                    "start_date", "DATE", date_range.start_date
+                ),
+                bigquery.ScalarQueryParameter("end_date", "DATE", date_range.end_date),
+                bigquery.ArrayQueryParameter("crime_types", "STRING", crime_types),
             ]
         )
 
