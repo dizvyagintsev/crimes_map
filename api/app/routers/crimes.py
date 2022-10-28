@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 
-from app.data_access_layer.crime_locations import ChicagoCrimesDAL, DateRange, Location
-from app.dependencies import get_chicago_crimes_dal
+from api.app.data_access_layer.crime_locations import ChicagoCrimesDAL, DateRange, Location
+from api.app.dependencies import get_chicago_crimes_dal
 
 router = APIRouter(prefix='/api/crimes/chicago')
 

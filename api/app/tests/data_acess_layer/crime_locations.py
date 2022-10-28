@@ -5,7 +5,7 @@ from google.cloud import bigquery
 from google.cloud.bigquery import Row
 from more_itertools import one
 
-from app.data_access_layer.crime_locations import ChicagoCrimesDAL, DateRange, Location
+from api.app.data_access_layer.crime_locations import ChicagoCrimesDAL, DateRange, Location
 
 
 class TestChicagoCrimesDAL:
