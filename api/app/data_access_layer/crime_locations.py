@@ -40,9 +40,9 @@ class ChicagoCrimesDAL:
         Returns first and last crime date from storage
 
         >>> ChicagoCrimesDAL(bigquery.Client()).date_range()
-        (datetime.date(2001, 1, 1), datetime.date(2022, 10, 18))
+        DateRange(datetime.date(2001, 1, 1), datetime.date(2022, 10, 18))
 
-        :return: Two dates, min and max accordingly
+        :return: Struct with first and last date
         """
         query = "SELECT MIN(DATE(date)), MAX(DATE(date)) FROM `bigquery-public-data.chicago_crime.crime`;"
         cursor = self.__session.query(query)

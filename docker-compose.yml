@@ -1,9 +1,24 @@
 version: '3.8'
 
 services:
-  api:
+  backend:
     build:
       context: ./api
+    ports:
+      - "8000:8000"
     command: python3 -m uvicorn app.main:app --host 0.0.0.0
     env_file:
       - api/.env
+
+  dashboard:
+    build:
+      context: ./dashboard
+    command: streamlit run app/src/dashboard.py
+    ports:
+      - "8501:8501"
+    env_file:
+      - dashboard/.env
+    depends_on:
+      - backend
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

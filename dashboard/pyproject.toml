@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "dashboard"
+version = "0.1.0"
+description = "Dashboard with map of crimes"
+authors = ["Denis Zvyagintsev <dizvyagintsev@avito.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+yarl = "^1.8.1"
+streamlit = "^1.14.0"
+requests = "^2.28.1"
+pandas = "^1.5.1"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.10.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

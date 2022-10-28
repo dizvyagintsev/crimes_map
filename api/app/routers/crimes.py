@@ -9,7 +9,7 @@ router = APIRouter(prefix="/api/crimes/chicago")
 
 
 @router.get("/crime_types", response_model=list[str])
-def get_crime_types(crimes_dal: ChicagoCrimesDAL = Depends(get_chicago_crimes_dal)):
+async def get_crime_types(crimes_dal: ChicagoCrimesDAL = Depends(get_chicago_crimes_dal)):
     """
     List of possible crime types
     """
@@ -17,7 +17,7 @@ def get_crime_types(crimes_dal: ChicagoCrimesDAL = Depends(get_chicago_crimes_da
 
 
 @router.get("/date_range", response_model=DateRange)
-def get_date_range(crimes_dal: ChicagoCrimesDAL = Depends(get_chicago_crimes_dal)):
+async def get_date_range(crimes_dal: ChicagoCrimesDAL = Depends(get_chicago_crimes_dal)):
     """
     First and last date from storage
     """
@@ -25,7 +25,7 @@ def get_date_range(crimes_dal: ChicagoCrimesDAL = Depends(get_chicago_crimes_dal
 
 
 @router.get("/locations", response_model=list[Location])
-def get_date_range(
+async def get_date_range(
     start_date: datetime.date,
     end_date: datetime.date,
     crime_types: list[str] = Query(),
