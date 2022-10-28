@@ -27,7 +27,7 @@ class TestChicagoCrimesDAL:
             return_value=[Row((date(2001, 1, 1), date(2022, 10, 18)), {'f0_': 0, 'f1_': 1})],
         )
 
-        assert ChicagoCrimesDAL(mocked_session).date_range() == (date(2001, 1, 1), date(2022, 10, 18))
+        assert ChicagoCrimesDAL(mocked_session).date_range() == DateRange(date(2001, 1, 1), date(2022, 10, 18))
         mocked_session.query.assert_called_once_with(
             'SELECT MIN(DATE(date)), MAX(DATE(date)) FROM `bigquery-public-data.chicago_crime.crime`;'
         )

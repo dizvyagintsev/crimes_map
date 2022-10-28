@@ -35,7 +35,7 @@ class ChicagoCrimesDAL:
 
         return [row['primary_type'] for row in cursor]
 
-    def date_range(self) -> tuple[datetime.date, datetime.date]:
+    def date_range(self) -> DateRange:
         """
         Returns first and last crime date from storage
 
@@ -47,7 +47,7 @@ class ChicagoCrimesDAL:
         query = 'SELECT MIN(DATE(date)), MAX(DATE(date)) FROM `bigquery-public-data.chicago_crime.crime`;'
         cursor = self.__session.query(query)
 
-        return tuple(one(cursor))
+        return DateRange(*one(cursor))
 
     def crime_locations(self, date_range: DateRange, crime_types: list[str]) -> list[Location]:
         """
