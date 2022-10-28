@@ -52,8 +52,8 @@ class ChicagoCrimesDAL:
     def crime_locations(self, date_range: DateRange, crime_types: list[str]) -> list[Location]:
         """
         Returns a list of crime locations
-        >>> range = DateRange(datetime.date(2022, 10, 1), datetime.date(2022, 10, 18))
-        >>> ChicagoCrimesDAL(bigquery.Client()).crime_locations(range, )
+        >>> dates = DateRange(datetime.date(2022, 10, 1), datetime.date(2022, 10, 18))
+        >>> ChicagoCrimesDAL(bigquery.Client()).crime_locations(dates, ['HOMICIDE'])
 
         :param date_range: range of dates to query by
         :param crime_types: list of crime types to query by
